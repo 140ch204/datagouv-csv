@@ -73,8 +73,8 @@ class Study:
 #        print(self.datafile.headers)
         for header in self.datafile.headers:
             if searched_header == header:
-                print(searched_header)
-                print(header)
+#                print(searched_header)
+#                print(header)
                 break
 
             columnnb += 1
@@ -118,6 +118,7 @@ class Study:
                     if (value in row[columnnb]) and row_nb !=0  :
                         result += [row]
                     row_nb += 1 
+        self.result = result
         return result
 
     def search_all(self,value): 
