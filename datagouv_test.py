@@ -70,5 +70,6 @@ class TestCSV(unittest.TestCase):
         self.assertEqual(row_nb, 9, "Should be 9 ")
 
 
+ 
 if __name__ == '__main__':
     unittest.main()
