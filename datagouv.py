@@ -101,7 +101,9 @@ class Study:
 
         end_time = datetime.now()
 
+        self.result = result
         return "Result saved in " + self.resultfilename + " within " + str(end_time - start_time)
+        
 
     def _find_in_one_column(self,value, searched_header):
         columnnb = self._findheader(searched_header)
@@ -121,16 +123,6 @@ class Study:
         self.result = result
         return result
 
-    def search_all(self,value): 
-        with open(self.datafile.name) as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter = self.datafile.delimiter)
-            for row in csv_reader:
-                for field in row:
-                    if value in field :
-                        1
-                        #print(row)
-
-        return "test ok"
 
 
     def search_in_all_column(self, value): 
@@ -144,6 +136,7 @@ class Study:
 
         end_time = datetime.now()
 
+        self.result = result
         return "Result saved in " + self.resultfilename + " within " + str(end_time - start_time)
 
 
@@ -176,5 +169,5 @@ class Study:
             #print(result)
             
         self._write_result(result)
-
+        self.result = result
         return result
