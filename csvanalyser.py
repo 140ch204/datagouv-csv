@@ -3,47 +3,30 @@ from datetime import datetime
 from datagouv import *
 
 
-#rnafile = DataFile('./data/StockEtablissement_utf8.csv', ';')
-rnafile = DataFile('./results/results_2020_2_17_18_54_15.csv',',')
-mystudy = Study(rnafile)
-#mystudy.extract_first_lines(5)
+#mystudy.extract_first_lines()
 
-#mystudy.search_in_one_column('84000','codePostalEtablissement')
+## StockEtablissement_utf8
 
+#myfile = DataFile('./data/StockEtablissement_utf8.csv', delimiter = ',', lineterminator='\r\n', encoding = 'utf-8')
+#mystudy = Study(myfile)
+#mystudy.extract_first_lines()
+#mystudy.search_in_one_column('91790', 'codePostalEtablissement')
 
-#print(rnafile.readtitles)
-print(rnafile.titles)
-a=6
-print(type(a))
-print(type(a) is int)
+## rna_import_20200101.csv
 
-
-#
-#rnafile = DataFile('./results/results_2020_1_30_17_45_36.csv', ';')
-
-#print(mystudy.search_in_one_colmun('00000','adrs_codepostal'))
-
-# print(mystudy.datafile.titles)
-
-#print(mystudy.datafile.firstlines)
-
-#print(mystudy.search_in_all_colmun("00000"))
-
-#mystudy.extract_first_lines(1000)
-
-#print(mystudy.search_in_one_colmun('91790','codePostalEtablissement'))
+#myfile = DataFile('./data/rna_import_20200101.csv', delimiter = ';', lineterminator='\r\n',  encoding = 'latin_1')
+#mystudy = Study(myfile)
+#mystudy.search_in_one_column('91790', 'adrs_codepostal')
 
 
-#rnafile.updated
+## rna_waldec_20200101
 
-#rnafile.titles
-#Département
-
-#rnafile = DataFile('./data/chiffres_cle_2018.csv', ';')
-#mystudy = Study(rnafile)
-#print(mystudy.search_in_one_column('91790','Code postal'))
+#myfile = DataFile('./data/rna_waldec_20200101.csv', delimiter = ';', lineterminator='\r\n',  encoding = 'latin_1')
+#mystudy = Study(myfile)
+#mystudy.search_in_one_column('91790', 'adrs_codepostal')
 
 
-
-
-
+## chiffres_cle_2018.csv
+#myfile = DataFile('./data/chiffres_cle_2018.csv', delimiter = ';', lineterminator='\r\n', encoding = 'utf-8')
+#mystudy = Study(myfile)
+#mystudy.search_in_one_column('91790', 'Code postal')

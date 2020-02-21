@@ -6,7 +6,7 @@ clear = lambda: os.system('clear') #on Windows System
 class DataFile:
     '''   This is the opendata.gouv file with the data '''
 
-    def __init__(self, name, delimiter = ';' ):
+    def __init__(self, name, delimiter = ';', lineterminator =  '\r\n', encoding = 'utf-8' ):
         ''' Initialization method'''
         self.created = datetime.now()
         self.updated = datetime.now()
@@ -14,7 +14,8 @@ class DataFile:
         self.delimiter = delimiter
         self.headers = []
         self.firstlines = []
-        self.lineterminator = '\r\n'
+        self.lineterminator = lineterminator
+        self.encoding = encoding
 
         self.readheaders()
         #self.read_first_lines(10)
@@ -24,7 +25,7 @@ class DataFile:
 
     def readheaders(self):
         self.headers = []
-        with open(self.name) as csv_file:
+        with open(self.name, encoding=self.encoding) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=self.delimiter, lineterminator=self.lineterminator)
             line_count = 0
             for row in csv_reader:
@@ -40,7 +41,7 @@ class DataFile:
 
     def read_first_lines(self,linenumber = 10):
         self.firstlines = []
-        with open(self.name) as csv_file:
+        with open(self.name, encoding=self.encoding) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=self.delimiter, lineterminator=self.lineterminator)
             line_count = 0
             for row in csv_reader:
@@ -112,7 +113,7 @@ class Study:
 #        print(columnnb)
 #        print()
         result = []
-        with open( self.datafile.name, encoding='utf-8') as csv_file:
+        with open( self.datafile.name, encoding= self.datafile.encoding) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter = self.datafile.delimiter)
             row_nb = 0
             for row in csv_reader:
@@ -143,7 +144,7 @@ class Study:
     def _find_in_all_column(self,value):
 
         result = []
-        with open( self.datafile.name, encoding='utf-8') as csv_file:
+        with open( self.datafile.name, encoding=self.datafile.encoding) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter = self.datafile.delimiter)
             row_nb = 0
             for row in csv_reader:
@@ -156,8 +157,8 @@ class Study:
     def extract_first_lines(self,linenumber=10):
 
         result = []
-        with open( self.datafile.name, 'r', newline='',encoding="utf8") as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter = self.datafile.delimiter, lineterminator='\r\n')
+        with open( self.datafile.name, 'r', newline='', encoding=self.datafile.encoding) as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter = self.datafile.delimiter, lineterminator=self.datafile.lineterminator)
             line_count = 0
             for row in csv_reader:
 #                print(result)
